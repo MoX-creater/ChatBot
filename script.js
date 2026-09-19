@@ -25,7 +25,7 @@ function addMessage(sender, message) {
   div.classList.add("message");
   div.classList.add(sender);
 
-  div.textContent = message.value;
+  div.textContent = message;
 
   chatbox.appendChild(div);
   chatbox.scrollTop = chatbox.scrollHeight;
@@ -49,5 +49,12 @@ function sendMessage() {
 
   if(msg === "") return;
   
+  addMessage("user", msg);
+
+  const res = predefinedResponses[msg] || "Sorry I can't help you with that";
+
+  addMessage("bot", res);
+
+  input.value = "";
 
 }
